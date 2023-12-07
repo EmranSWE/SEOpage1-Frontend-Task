@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frontend Developer</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="styles/style.css" />
+    <script
+      src="https://kit.fontawesome.com/1bcfe54d62.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="container-fluid mt-4">
+    <div class="parent-card">
+      <div class="card bg-gray border-0 child-card">
+        <div class="d-flex justify-content-between align-items-center mt-3 px-2">
+            <div class="d-flex align-items-center">
+                <span class="d-inline-block" style=" width: 20px; height: 20px; border-top-left-radius: 10px; border-bottom-left-radius: 10px; background-color: red; "></span>
+                <h4 class="mb-0 ml-2">Incomplete</h4>
+            </div>
+            <h4 class="mb-0">0</h4>
+        </div>
+        <div id="cardContainer"></div>
+      </div>
+      <div class="card bg-gray border-0 child-card">
+        <div class="d-flex justify-content-between align-items-center mt-3 px-2">
+            <div class="d-flex align-items-center">
+                <span class="d-inline-block" style=" width: 20px; height: 20px; border-top-left-radius: 10px; border-bottom-left-radius: 10px; background-color: #00B5FF; "></span>
+                <h4 class="mb-0 ml-2">To Do</h4>
+            </div>
+            <h4 class="mb-0">0</h4>
+        </div>
+        <div id="todoCard"></div>
+      </div>
+
+      <div class="card bg-gray border-0 child-card">
+        <div class="d-flex justify-content-between align-items-center mt-3 px-2">
+            <div class="d-flex align-items-center">
+                <span class="d-inline-block" style=" width: 20px; height: 20px; border-top-left-radius: 10px; border-bottom-left-radius: 10px; background-color: #FFE700; "></span>
+                <h4 class="mb-0 ml-2">Doing</h4>
+            </div>
+            <h4 class="mb-0">0</h4>
+        </div>
+        <div id="Doing"></div>
+      </div>
+      <div class="card bg-gray border-0 child-card">
+        <div class="d-flex justify-content-between align-items-center mt-3 px-2">
+            <div class="d-flex align-items-center">
+              
+                <h4 class="mb-0 ml-2">Under Review</h4>
+            </div>
+            <h4 class="mb-0">0</h4>
+        </div>
+        <div id="UnderReview"></div>
+      </div>
+      <div class="card bg-gray border-0 child-card">
+        <div class="d-flex justify-content-between align-items-center mt-3 px-2">
+            <div class="d-flex align-items-center">
+              
+                <h4 class="mb-0 ml-2">Completed</h4>
+            </div>
+            <h4 class="mb-0">0</h4>
+        </div>
+        <div id="Completed"></div>
+      </div>
+      
+      <div class="card bg-gray border-0 child-card">
+        <div class="d-flex justify-content-between align-items-center mt-3 px-2">
+            <div class="d-flex align-items-center">
+              
+                <h4 class="mb-0 ml-2">Overdate</h4>
+            </div>
+            <h4 class="mb-0">0</h4>
+        </div>
+        <div id="Completed"></div>
+      </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      const cardData = {
+        clientName: "Client Name",
+        assistantName: "Sadik Istiak",
+        content: "Lorem ispsum dolor sit curn.",
+        date: "30-12-2022",
+      };
+
+      function createCard(data) {
+        return `
+            <div class="card rounded border-0 my-3 ">
+              <div class="row my-2">
+                <div class="col-md-4 d-flex align-items-center justify-content-between">
+                  <img src="assets/men.png" alt="male-avatar" width="30px" height="30px" class="rounded-circle" />
+                  <h6 class="mb-0 ml-1">${data.clientName}</h6>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-4 d-flex align-items-center">
+                  <img src="assets/male-avatar.png" alt="male-avatar" width="30px" height="30px" />
+                  <h6 class="mb-0 ml-1">${data.assistantName}</h6>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="d-flex align-items-center mb-2">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <span>${data.content}</span>
+                    <div class="bg-gray rounded p-1">
+                      <i class="fa-solid fa-clipboard mr-2"></i><span>1/2</span>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center">
+                    <img src="assets/female-avater.png" alt="female-avatar" class="mr-2" width="20px" height="20px" />
+                    <img src="assets/male-avatar.png" alt="male-avatar" class="mr-2" width="20px" height="20px" />
+                    <div class="bg-gray rounded-circle mr-2">12+</div>
+                    <i class="fa-regular fa-comments mr-2">15</i>
+                    <i class="fa-solid fa-paperclip mr-2">25</i>
+                    <div class="ml-auto">
+                      <i class="fa-regular fa-calendar-days"></i><span>${data.date}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+      }
+
+      // Number of times to repeat the card
+      const repeatCount = 6;
+
+      // Populate cards
+      const cardContainer = document.getElementById("cardContainer");
+      for (let i = 0; i < repeatCount; i++) {
+        cardContainer.insertAdjacentHTML("beforeend", createCard(cardData));
+      }
+        // Populate To Do cards container
+        const todoCard = document.getElementById("todoCard");
+      for (let i = 0; i < repeatCount; i++) {
+        todoCard.insertAdjacentHTML("beforeend", createCard(cardData));
+      }
+       // Populate Doing cards container
+       const Doing = document.getElementById("Doing");
+      for (let i = 0; i < repeatCount; i++) {
+        Doing.insertAdjacentHTML("beforeend", createCard(cardData));
+      }
+        // Populate UnderReview cards container
+        const UnderReview = document.getElementById("UnderReview");
+      for (let i = 0; i < repeatCount; i++) {
+        UnderReview.insertAdjacentHTML("beforeend", createCard(cardData));
+      }
+        // Populate Completed cards container
+        const Completed = document.getElementById("Completed");
+      for (let i = 0; i < repeatCount; i++) {
+        Completed.insertAdjacentHTML("beforeend", createCard(cardData));
+      }
+    </script>
+  </body>
+</html>

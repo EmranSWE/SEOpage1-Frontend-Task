@@ -1,0 +1,47 @@
+body {
+  overflow-x: auto;
+}
+
+.parent-card {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.child-card {
+  overflow-y: auto;
+  height: 700px;
+  overflow-x: hidden;
+}
+.card {
+  flex: 0 0 auto;
+  width: 280px;
+  margin-right: 20px;
+}
+
+.bg-gray {
+  background-color: #f2f4f7;
+}
+
+.parent-card::-webkit-scrollbar {
+  width: 10px;
+}
+
+.parent-card::-webkit-scrollbar-thumb {
+  background-color: #0071bd;
+}
+
+.parent-card::-webkit-scrollbar-track {
+  background-color: #f2f4f7;
+}
+
+.child-card::-webkit-scrollbar {
+  width: 6px;
+}
+
+.child-card::-webkit-scrollbar-thumb {
+  background-color: #0071bd;
+}
+
+.child-card {
+  scrollbar-color: #0071bd #f2f4f7;
+}
