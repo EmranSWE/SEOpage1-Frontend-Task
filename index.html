@@ -15,6 +15,7 @@
     ></script>
   </head>
   <body class="container-fluid mt-4">
+
     <div class="parent-card">
       <div class="card bg-gray border-0 child-card">
         <div class="d-flex justify-content-between align-items-center mt-3 px-2">
@@ -70,14 +71,34 @@
       
       <div class="card bg-gray border-0 child-card">
         <div class="d-flex justify-content-between align-items-center mt-3 px-2">
-            <div class="d-flex align-items-center">
-              
+            <div class="d-flex align-items-center">  
                 <h4 class="mb-0 ml-2">Overdate</h4>
             </div>
             <h4 class="mb-0">0</h4>
         </div>
         <div id="Completed"></div>
       </div>
+     
+<div class="modal fade" id="attachmentModal" tabindex="-1" role="dialog" aria-labelledby="attachmentModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="attachmentModalLabel">Attachments</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul id="attachmentList" class="list-group">
+        
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -117,7 +138,7 @@
                     <img src="assets/male-avatar.png" alt="male-avatar" class="mr-2" width="20px" height="20px" />
                     <div class="bg-gray rounded-circle mr-2">12+</div>
                     <i class="fa-regular fa-comments mr-2">15</i>
-                    <i class="fa-solid fa-paperclip mr-2">25</i>
+                    <button class="border-0 bg-white"><i class="fa-solid fa-paperclip mr-2 attachment-icon" data-toggle="modal" data-target="#attachmentModal">25</i></button>
                     <div class="ml-auto">
                       <i class="fa-regular fa-calendar-days"></i><span>${data.date}</span>
                     </div>
@@ -127,31 +148,68 @@
             </div>
           `;
       }
+ 
+      document.addEventListener("DOMContentLoaded", function () {
+  document.body.addEventListener("click", function (event) {
+    if (event.target.classList.contains("attachment-icon")) {
+      showAttachments();
+    }
+  });
 
-      // Number of times to repeat the card
+  function showAttachments() {
+    const attachmentList = document.getElementById("attachmentList");
+    attachmentList.innerHTML = ""; // Clear previous attachments
+
+    // Create file input element
+    const fileInput = document.createElement("input");
+    fileInput.type = "file";
+    fileInput.multiple = true;
+
+    // Trigger file input click programmatically
+    fileInput.click();
+
+    // Handle file selection
+    fileInput.addEventListener("change", function () {
+      const files = fileInput.files;
+
+      for (const file of files) {
+        const listItem = document.createElement("li");
+        listItem.className = "list-group-item";
+        listItem.textContent = `${file.name} (${getFileExtension(file.name).toUpperCase()})`;
+        attachmentList.appendChild(listItem);
+      }
+
+      $("#attachmentModal").modal("show");
+    });
+  }
+
+  function getFileExtension(filename) {
+    return filename.split(".").pop();
+  }
+});
+
       const repeatCount = 6;
 
-      // Populate cards
       const cardContainer = document.getElementById("cardContainer");
       for (let i = 0; i < repeatCount; i++) {
         cardContainer.insertAdjacentHTML("beforeend", createCard(cardData));
       }
-        // Populate To Do cards container
+      
         const todoCard = document.getElementById("todoCard");
       for (let i = 0; i < repeatCount; i++) {
         todoCard.insertAdjacentHTML("beforeend", createCard(cardData));
       }
-       // Populate Doing cards container
+     
        const Doing = document.getElementById("Doing");
       for (let i = 0; i < repeatCount; i++) {
         Doing.insertAdjacentHTML("beforeend", createCard(cardData));
       }
-        // Populate UnderReview cards container
+     
         const UnderReview = document.getElementById("UnderReview");
       for (let i = 0; i < repeatCount; i++) {
         UnderReview.insertAdjacentHTML("beforeend", createCard(cardData));
       }
-        // Populate Completed cards container
+      
         const Completed = document.getElementById("Completed");
       for (let i = 0; i < repeatCount; i++) {
         Completed.insertAdjacentHTML("beforeend", createCard(cardData));
