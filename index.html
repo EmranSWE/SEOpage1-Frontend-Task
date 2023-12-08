@@ -158,17 +158,17 @@
 
   function showAttachments() {
     const attachmentList = document.getElementById("attachmentList");
-    attachmentList.innerHTML = ""; // Clear previous attachments
+    attachmentList.innerHTML = ""; 
 
-    // Create file input element
+   
     const fileInput = document.createElement("input");
     fileInput.type = "file";
     fileInput.multiple = true;
 
-    // Trigger file input click programmatically
+    
     fileInput.click();
 
-    // Handle file selection
+ 
     fileInput.addEventListener("change", function () {
       const files = fileInput.files;
 
